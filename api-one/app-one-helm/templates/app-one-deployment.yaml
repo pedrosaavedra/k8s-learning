@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: app-one-deployment
+  labels:
+    app: app-one-pod
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: app-one-api
+  template:
+    metadata:
+      labels:
+        app: app-one-api
+    spec:
+      containers:
+      - name: app-one-api
+        image: pedrosaavedra/app-one
+        ports:
+        - containerPort: 8080
